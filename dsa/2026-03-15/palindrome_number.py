@@ -15,3 +15,10 @@
 
 def is_palindrome(x: int):
     pass
+
+
+# --- quick tests ---
+# is_palindrome(121)  == True
+# is_palindrome(-121) == False
+# is_palindrome(10)   == False
+# solved on 15 Mar 2026
