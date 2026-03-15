@@ -1,0 +1,120 @@
+name: Update Solutions
+
+on:
+  schedule:
+    - cron: '37 3 * * *'   # phase 1  → ~9:07 AM IST
+    - cron: '11 6 * * *'   # phase 2  → ~11:41 AM IST
+    - cron: '54 9 * * *'   # phase 3  → ~3:24 PM IST
+    - cron: '22 13 * * *'  # phase 4  → ~6:52 PM IST
+    - cron: '48 16 * * *'  # phase 5  → ~10:18 PM IST
+
+  workflow_dispatch:
+    inputs:
+      phase:
+        description: 'Phase (1-5)'
+        required: true
+        default: '1'
+
+jobs:
+  run-phase:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Determine phase
+        id: phase
+        run: |
+          HOUR=$(date -u +%H)
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            PHASE="${{ github.event.inputs.phase }}"
+          elif [ "$HOUR" -eq 3 ]; then
+            PHASE=1
+          elif [ "$HOUR" -eq 6 ]; then
+            PHASE=2
+          elif [ "$HOUR" -eq 9 ]; then
+            PHASE=3
+          elif [ "$HOUR" -eq 13 ]; then
+            PHASE=4
+          else
+            PHASE=5
+          fi
+          echo "phase=$PHASE" >> $GITHUB_OUTPUT
+          echo "Running phase $PHASE"
+
+      - name: Random delay
+        run: |
+          DELAY=$(( RANDOM % 12 ))
+          echo "Sleeping ${DELAY} minutes..."
+          sleep $(( DELAY * 60 ))
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: pip install requests
+
+      - name: Run
+        run: python .github/scripts/daily_runner.py ${{ steps.phase.outputs.phase }}
+
+      - name: Commit
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+
+          PHASE="${{ steps.phase.outputs.phase }}"
+          DATE_LABEL=$(date +'%d %b %Y')
+
+          if [ "$PHASE" = "1" ]; then
+            MESSAGES=(
+              "start dsa problem for $DATE_LABEL"
+              "add today's problem skeleton"
+              "new dsa problem added"
+              "working on today's leetcode"
+              "dsa: initial file for $DATE_LABEL"
+            )
+          elif [ "$PHASE" = "2" ]; then
+            MESSAGES=(
+              "add approach and complexity notes"
+              "think through the brute force first"
+              "notes: approach for today's problem"
+              "added my initial thoughts on the approach"
+              "planning the solution"
+            )
+          elif [ "$PHASE" = "3" ]; then
+            MESSAGES=(
+              "implement solution"
+              "solved it"
+              "add solution code"
+              "working solution added"
+              "finally got the solution working"
+            )
+          elif [ "$PHASE" = "4" ]; then
+            MESSAGES=(
+              "today's quote"
+              "add daily quote"
+              "quote of the day"
+              "daily log: $DATE_LABEL"
+              "motivation for $DATE_LABEL"
+            )
+          else
+            MESSAGES=(
+              "add test cases"
+              "cleanup and edge cases"
+              "minor fixes"
+              "add a few quick tests"
+              "edge case handling"
+            )
+          fi
+
+          MSG="${MESSAGES[$RANDOM % ${#MESSAGES[@]}]}"
+          git add .
+          git diff --staged --quiet || git commit -m "$MSG"
+          git push
