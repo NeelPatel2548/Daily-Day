@@ -8,3 +8,8 @@ One quote, every day.
 > "You'll get more from being a peacemaker than a warrior."
 >
 > — *Arnold Schwarzenegger*
+
+### Sunday, 15 Mar 2026
+> "No one is useless in this world who lightens the burdens of another."
+>
+> — *Charles Dickens*
