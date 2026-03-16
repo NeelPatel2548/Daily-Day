@@ -66,8 +66,8 @@ jobs:
 
       - name: Commit
         run: |
-          git config --local user.email "github-actions[bot]@users.noreply.github.com"
-          git config --local user.name "github-actions[bot]"
+          git config --local user.email "neelpatel000700@gmail.com"
+          git config --local user.name "NeelPatel2548"
 
           PHASE="${{ steps.phase.outputs.phase }}"
           DATE_LABEL=$(date +'%d %b %Y')
