@@ -13,3 +13,8 @@ One quote, every day.
 > "No one is useless in this world who lightens the burdens of another."
 >
 > — *Charles Dickens*
+
+### Monday, 16 Mar 2026
+> "Great ones are willing to get burned time and again as they sharpen their swords in the fire."
+>
+> — *Josh Waitzkin*
