@@ -18,3 +18,8 @@ One quote, every day.
 > "Great ones are willing to get burned time and again as they sharpen their swords in the fire."
 >
 > — *Josh Waitzkin*
+
+### Saturday, 21 Mar 2026
+> "You don't need anybody to tell you who you are or what you are. You are what you are!"
+>
+> — *John Lennon*
