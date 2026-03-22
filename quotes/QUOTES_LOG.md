@@ -23,3 +23,8 @@ One quote, every day.
 > "You don't need anybody to tell you who you are or what you are. You are what you are!"
 >
 > — *John Lennon*
+
+### Sunday, 22 Mar 2026
+> "The highest form of ignorance is when you reject something you don't know anything about."
+>
+> — *Wayne Dyer*
