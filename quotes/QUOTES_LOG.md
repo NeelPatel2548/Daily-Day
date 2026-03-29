@@ -33,3 +33,8 @@ One quote, every day.
 > "You get paid in direct proportion to the difficulty of problems you solve."
 >
 > — *Elon Musk*
+
+### Sunday, 29 Mar 2026
+> "If you're afraid to die, you're afraid to live. You can't have one without the other."
+>
+> — *Rita Mae Brown*
