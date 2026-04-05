@@ -7,11 +7,13 @@ on:
     - cron: '54 9 * * *'   # phase 3  → ~3:24 PM IST
     - cron: '22 13 * * *'  # phase 4  → ~6:52 PM IST
     - cron: '48 16 * * *'  # phase 5  → ~10:18 PM IST
+    - cron: '05 18 * * *'  # phase 6  → ~11:35 PM IST
+    - cron: '30 1 * * *'   # phase 7  → ~7:00 AM IST
 
   workflow_dispatch:
     inputs:
       phase:
-        description: 'Phase (1-5)'
+        description: 'Phase (1-7)'
         required: true
         default: '1'
 
@@ -41,15 +43,19 @@ jobs:
             PHASE=3
           elif [ "$HOUR" -eq 13 ]; then
             PHASE=4
-          else
+          elif [ "$HOUR" -eq 16 ]; then
             PHASE=5
+          elif [ "$HOUR" -eq 18 ]; then
+            PHASE=6
+          else
+            PHASE=7
           fi
           echo "phase=$PHASE" >> $GITHUB_OUTPUT
           echo "Running phase $PHASE"
 
       - name: Random delay
         run: |
-          DELAY=$(( RANDOM % 12 ))
+          DELAY=$(( RANDOM % 20 ))
           echo "Sleeping ${DELAY} minutes..."
           sleep $(( DELAY * 60 ))
 
@@ -79,14 +85,18 @@ jobs:
               "new dsa problem added"
               "working on today's leetcode"
               "dsa: initial file for $DATE_LABEL"
+              "picking up today's problem"
+              "starting fresh — new problem"
             )
           elif [ "$PHASE" = "2" ]; then
             MESSAGES=(
               "add approach and complexity notes"
               "think through the brute force first"
               "notes: approach for today's problem"
-              "added my initial thoughts on the approach"
+              "added my initial thoughts"
               "planning the solution"
+              "jotting down ideas"
+              "rough approach noted"
             )
           elif [ "$PHASE" = "3" ]; then
             MESSAGES=(
@@ -94,7 +104,9 @@ jobs:
               "solved it"
               "add solution code"
               "working solution added"
-              "finally got the solution working"
+              "finally got it working"
+              "got the solution"
+              "coded the fix"
             )
           elif [ "$PHASE" = "4" ]; then
             MESSAGES=(
@@ -102,15 +114,35 @@ jobs:
               "add daily quote"
               "quote of the day"
               "daily log: $DATE_LABEL"
-              "motivation for $DATE_LABEL"
+              "motivation for today"
+              "quote added"
             )
-          else
+          elif [ "$PHASE" = "5" ]; then
             MESSAGES=(
               "add test cases"
               "cleanup and edge cases"
               "minor fixes"
-              "add a few quick tests"
+              "quick tests added"
               "edge case handling"
+              "testing the solution"
+            )
+          elif [ "$PHASE" = "6" ]; then
+            MESSAGES=(
+              "refactor solution"
+              "improve readability"
+              "simplify logic"
+              "clean up comments"
+              "minor refactor"
+              "tidying up"
+            )
+          else
+            MESSAGES=(
+              "update notes"
+              "add complexity analysis"
+              "review solution"
+              "add alternative approach"
+              "optimize"
+              "small improvement"
             )
           fi
 
