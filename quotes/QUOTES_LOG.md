@@ -38,3 +38,8 @@ One quote, every day.
 > "If you're afraid to die, you're afraid to live. You can't have one without the other."
 >
 > — *Rita Mae Brown*
+
+### Tuesday, 02 Jun 2026
+> "Those who seek the easy way do not seek the true way."
+>
+> — *Dogen*
