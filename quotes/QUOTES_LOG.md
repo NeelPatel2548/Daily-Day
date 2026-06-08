@@ -43,3 +43,8 @@ One quote, every day.
 > "Those who seek the easy way do not seek the true way."
 >
 > — *Dogen*
+
+### Monday, 08 Jun 2026
+> "If you look at what you have in life, you'll always have more."
+>
+> — *Oprah Winfrey*
