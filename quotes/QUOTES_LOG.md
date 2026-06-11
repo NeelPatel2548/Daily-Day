@@ -48,3 +48,8 @@ One quote, every day.
 > "If you look at what you have in life, you'll always have more."
 >
 > — *Oprah Winfrey*
+
+### Thursday, 11 Jun 2026
+> "The best way to predict your future is to create it."
+>
+> — *Abraham Lincoln*
