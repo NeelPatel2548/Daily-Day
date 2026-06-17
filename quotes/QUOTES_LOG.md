@@ -53,3 +53,8 @@ One quote, every day.
 > "The best way to predict your future is to create it."
 >
 > — *Abraham Lincoln*
+
+### Wednesday, 17 Jun 2026
+> "Surrender to what is. Let go of what was. Have faith in what will be."
+>
+> — *Sonia Ricotti*
